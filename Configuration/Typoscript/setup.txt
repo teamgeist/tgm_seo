@@ -1,0 +1,32 @@
+page.meta {
+	robots >
+	robots.cObject = CASE
+	robots.cObject {
+		key.data = page:meta_robots
+		
+		default = TEXT
+		default.value = index,follow
+		
+		1 < .default
+		1.value = index,nofollow
+		
+		2 < .default
+		2.value = noindex,follow
+		
+		3 < .default
+		3.value = noindex,nofollow
+	}
+}
+
+plugin.tx_tgmseo.link.canonical = TEXT
+[globalVar = LIT:0 < {$plugin.tx_tgmseo.link.canonical.useRequestUrlIfEmpty}]
+	plugin.tx_tgmseo.link.canonical.data = getIndpEnv:TYPO3_REQUEST_URL
+[end]
+
+plugin.tx_tgmseo.link.canonical {
+	wrap = <link rel="canonical" href="|" />
+	required = 1
+	override.field = canonical
+}
+
+page.headerData.23 =< plugin.tx_tgmseo.link.canonical

@@ -1,0 +1,12 @@
+plugin.tx_tgmseo {
+	link {
+		# cat=plugin.tx_tgmseo/enable; type=boolean; label=Default Canonical:Use getIndpEnv:TYPO3_REQUEST_URL if field canonical is empty
+		canonical.useRequestUrlIfEmpty = 1
+	}
+	
+	og {
+	}
+	
+	meta {
+	}
+}
