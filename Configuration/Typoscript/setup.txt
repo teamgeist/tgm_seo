@@ -18,15 +18,31 @@ page.meta {
 	}
 }
 
-plugin.tx_tgmseo.link.canonical = TEXT
-[globalVar = LIT:0 < {$plugin.tx_tgmseo.link.canonical.useRequestUrlIfEmpty}]
-	plugin.tx_tgmseo.link.canonical.data = getIndpEnv:TYPO3_REQUEST_URL
-[end]
-
+plugin.tx_tgmseo.link.canonical = COA
 plugin.tx_tgmseo.link.canonical {
-	wrap = <link rel="canonical" href="|" />
-	required = 1
-	override.field = canonical
+	stdWrap.wrap = <link rel="canonical" href="|" />
+	stdWrap.required = 1
+	10 = TEXT
+	10 {
+		field = canonical
+		required = 1
+	}
 }
+
+[globalVar = LIT:0 < {$plugin.tx_tgmseo.link.canonical.useRequestUrlIfEmpty}]
+plugin.tx_tgmseo.link.canonical {
+	20 = TEXT
+	20 {
+		if.isFalse.field = canonical
+		typolink {
+			parameter.data = page:uid
+			forceAbsoluteUrl = 1
+			addQueryString = 1
+			addQueryString.exclude = cHash,tx_felogin_pi1
+			returnLast = url
+		}
+	}
+}
+[global]
 
 page.headerData.23 =< plugin.tx_tgmseo.link.canonical
