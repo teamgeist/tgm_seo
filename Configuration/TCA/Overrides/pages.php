@@ -26,8 +26,18 @@ $tmp_cr_seitenattribute_columns = array(
 				'eval' => 'trim',
 		)
 	),
+	'titletag' => array (
+		'exclude' => 1,
+		'label' => 'Title-Tag',
+		'config' => array (
+			'type' => 'input',
+			'size' => '45',
+			'max' => '255',
+			'eval' => 'trim',
+		)
+	),
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tmp_cr_seitenattribute_columns, 1);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'metatags', '--linebreak--,meta_robots,--linebreak--,canonical', 'after:description');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'metatags', '--linebreak--,titletag,--linebreak--,meta_robots,--linebreak--,canonical', 'after:description');
 
