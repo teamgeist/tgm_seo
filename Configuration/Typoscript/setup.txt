@@ -1,6 +1,6 @@
 page.headerData.5 = COA
 page.headerData.5 {
-	# auskommentierte Zeilen sollten im Typoscript der Seite stehen
+	#auskommentierte Zeilen sollten im Typoscript der Seite stehen
 	#2 = TEXT
 	#2.noTrimWrap = |<title>|</title>|
 	#2.data = page:title
