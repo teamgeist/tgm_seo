@@ -6,11 +6,11 @@ $tmp_cr_seitenattribute_columns = array(
 		'config' => array(
 			'type' => 'select',
 			'items' => array(
-                array('index, follow', 0),
-                array('index, nofollow', 1),
-                array('noindex, follow', 2),
-                array('noindex, nofollow', 3),
-            ),
+				array('index, follow', 0),
+				array('index, nofollow', 1),
+				array('noindex, follow', 2),
+				array('noindex, nofollow', 3),
+			),
 			'size' => 1,
 			'maxitems' => 1,
 			'eval' => ''
@@ -20,15 +20,15 @@ $tmp_cr_seitenattribute_columns = array(
 		'exclude' => 1,
 		'label' => 'Canonical',
 		'config' => array (
-				'type' => 'input',
-				'size' => '45',
-				'max' => '255',
-				'eval' => 'trim',
+			'type' => 'input',
+			'size' => '45',
+			'max' => '255',
+			'eval' => 'trim',
 		)
 	),
 	'titletag' => array (
 		'exclude' => 1,
-		'label' => 'Title-Tag',
+		'label' => 'Seitetitel (wenn leer: Seitenüberschrift)',
 		'config' => array (
 			'type' => 'input',
 			'size' => '45',
@@ -39,5 +39,5 @@ $tmp_cr_seitenattribute_columns = array(
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tmp_cr_seitenattribute_columns, 1);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'metatags', '--linebreak--,titletag,--linebreak--,meta_robots,--linebreak--,canonical', 'after:description');
-
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'metatags', '--linebreak--,meta_robots,--linebreak--,canonical', 'after:description');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'title', '--linebreak--,titletag', 'after:nav_title');

@@ -1,18 +1,37 @@
+page.headerData.5 = COA
+page.headerData.5 {
+	# auskommentierte Zeilen sollten im Typoscript der Seite stehen
+	#2 = TEXT
+	#2.noTrimWrap = |<title>|</title>|
+	#2.data = page:title
+	2.if {
+		isTrue.data = page:titletag
+		negate = 1
+	}
+
+	4 = TEXT
+	4.noTrimWrap = |<title>|</title>|
+	4.data = page:titletag
+	4.if {
+		isTrue.data = page:titletag
+	}
+}
+
 page.meta {
 	robots >
 	robots.cObject = CASE
 	robots.cObject {
 		key.data = page:meta_robots
-		
+
 		default = TEXT
 		default.value = index,follow
-		
+
 		1 < .default
 		1.value = index,nofollow
-		
+
 		2 < .default
 		2.value = noindex,follow
-		
+
 		3 < .default
 		3.value = noindex,nofollow
 	}
@@ -30,19 +49,19 @@ plugin.tx_tgmseo.link.canonical {
 }
 
 [globalVar = LIT:0 < {$plugin.tx_tgmseo.link.canonical.useRequestUrlIfEmpty}]
-plugin.tx_tgmseo.link.canonical {
-	20 = TEXT
-	20 {
-		if.isFalse.field = canonical
-		typolink {
-			parameter.data = page:uid
-			forceAbsoluteUrl = 1
-			addQueryString = 1
-			addQueryString.exclude = cHash,tx_felogin_pi1
-			returnLast = url
+	plugin.tx_tgmseo.link.canonical {
+		20 = TEXT
+		20 {
+			if.isFalse.field = canonical
+			typolink {
+				parameter.data = page:uid
+				forceAbsoluteUrl = 1
+				addQueryString = 1
+				addQueryString.exclude = cHash,tx_felogin_pi1
+				returnLast = url
+			}
 		}
 	}
-}
 [global]
 
 page.headerData.23 =< plugin.tx_tgmseo.link.canonical

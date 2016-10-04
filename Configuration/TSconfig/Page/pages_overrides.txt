@@ -1,0 +1,3 @@
+#TCEFORM.pages.title.label = LLL:EXT:tgm_seo/locallang_db.php:pages.title
+TCEFORM.pages.title.label.de = Seitenüberschrift
+TCEFORM.pages.nav_title.label.de = Alternativer Navigationstitel (wenn leer: Seitenüberschrift)
